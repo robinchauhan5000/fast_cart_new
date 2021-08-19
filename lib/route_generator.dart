@@ -45,6 +45,7 @@ class RouteGenerator {
         return MaterialPageRoute(builder: (_) => OnboardingCheck());
       case '/OnBoardingScreen':
         return MaterialPageRoute(builder: (_) => OnBoardingScreen());
+
       case '/SignUp':
         return MaterialPageRoute(builder: (_) => SignUpWidget());
       case '/MobileVerification':
@@ -74,6 +75,7 @@ class RouteGenerator {
         return MaterialPageRoute(
             builder: (_) =>
                 ProductWidget(routeArgument: args as RouteArgument));
+
       case '/Category':
         return MaterialPageRoute(
             builder: (_) =>

@@ -1,6 +1,8 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:markets/constants/colors_constants.dart';
+import 'package:markets/utills/SizeConfig.dart';
 
 import '../models/category.dart';
 import '../models/route_argument.dart';
@@ -9,7 +11,8 @@ import '../models/route_argument.dart';
 class CategoriesCarouselItemWidget extends StatelessWidget {
   double marginLeft;
   Category category;
-  CategoriesCarouselItemWidget({Key key, this.marginLeft, this.category}) : super(key: key);
+  CategoriesCarouselItemWidget({Key key, this.marginLeft, this.category})
+      : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -17,7 +20,8 @@ class CategoriesCarouselItemWidget extends StatelessWidget {
       splashColor: Theme.of(context).accentColor.withOpacity(0.08),
       highlightColor: Colors.transparent,
       onTap: () {
-        Navigator.of(context).pushNamed('/Category', arguments: RouteArgument(id: category.id));
+        Navigator.of(context)
+            .pushNamed('/Category', arguments: RouteArgument(id: category.id));
       },
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.center,
@@ -25,13 +29,15 @@ class CategoriesCarouselItemWidget extends StatelessWidget {
           Hero(
             tag: category.id,
             child: Container(
-              margin: EdgeInsetsDirectional.only(start: this.marginLeft, end: 20),
-              width: 80,
-              height: 80,
+              //margin: EdgeInsetsDirectional.only(start: this.marginLeft, end: 20),
+              width: SizeConfig.blockSizeHorizontal * 22,
+              height: SizeConfig.blockSizeHorizontal * 18,
+              alignment: Alignment.center,
+              margin: EdgeInsets.symmetric(
+                  horizontal: SizeConfig.blockSizeHorizontal * 1.2),
               decoration: BoxDecoration(
-                  color: Theme.of(context).primaryColor,
-                  borderRadius: BorderRadius.all(Radius.circular(5)),
-                  boxShadow: [BoxShadow(color: Theme.of(context).focusColor.withOpacity(0.2), offset: Offset(0, 2), blurRadius: 7.0)]),
+                  color: appColorPrimary2,
+                  borderRadius: BorderRadius.circular(20)),
               child: Padding(
                 padding: const EdgeInsets.all(15),
                 child: category.image.url.toLowerCase().endsWith('.svg')
@@ -46,7 +52,8 @@ class CategoriesCarouselItemWidget extends StatelessWidget {
                           'assets/img/loading.gif',
                           fit: BoxFit.cover,
                         ),
-                        errorWidget: (context, url, error) => Icon(Icons.error_outline),
+                        errorWidget: (context, url, error) =>
+                            Icon(Icons.error_outline),
                       ),
               ),
             ),

@@ -17,11 +17,11 @@ class SearchBarWidget extends StatelessWidget {
       child: Container(
         padding: EdgeInsets.all(9),
         decoration: BoxDecoration(
-            color: Colors.transparent,
+            color: Colors.white,
             border: Border.all(
-              color: Theme.of(context).focusColor.withOpacity(0.2),
+              color: Colors.white,
             ),
-            borderRadius: BorderRadius.circular(4)),
+            borderRadius: BorderRadius.circular(20)),
         child: Row(
           children: <Widget>[
             Padding(
@@ -34,37 +34,40 @@ class SearchBarWidget extends StatelessWidget {
                 maxLines: 1,
                 softWrap: false,
                 overflow: TextOverflow.fade,
-                style: Theme.of(context).textTheme.caption.merge(TextStyle(fontSize: 13)),
+                style: Theme.of(context)
+                    .textTheme
+                    .caption
+                    .merge(TextStyle(fontSize: 13)),
               ),
             ),
             SizedBox(width: 8),
-            InkWell(
-              onTap: () {
-                onClickFilter('e');
-              },
-              child: Container(
-                padding: const EdgeInsets.only(right: 10, left: 10, top: 5, bottom: 5),
-                decoration: BoxDecoration(
-                  borderRadius: BorderRadius.all(Radius.circular(5)),
-                  color: Theme.of(context).focusColor.withOpacity(0.1),
-                ),
-                child: Wrap(
-                  crossAxisAlignment: WrapCrossAlignment.center,
-                  spacing: 4,
-                  children: [
-                    Text(
-                      S.of(context).filter,
-                      style: TextStyle(color: Theme.of(context).hintColor),
-                    ),
-                    Icon(
-                      Icons.filter_list,
-                      color: Theme.of(context).hintColor,
-                      size: 21,
-                    ),
-                  ],
-                ),
-              ),
-            ),
+            // InkWell(
+            //   onTap: () {
+            //     onClickFilter('e');
+            //   },
+            //   child: Container(
+            //     padding: const EdgeInsets.only(right: 10, left: 10, top: 5, bottom: 5),
+            //     decoration: BoxDecoration(
+            //       borderRadius: BorderRadius.all(Radius.circular(5)),
+            //       color: Theme.of(context).focusColor.withOpacity(0.1),
+            //     ),
+            //     child: Wrap(
+            //       crossAxisAlignment: WrapCrossAlignment.center,
+            //       spacing: 4,
+            //       children: [
+            //         Text(
+            //           S.of(context).filter,
+            //           style: TextStyle(color: Theme.of(context).hintColor),
+            //         ),
+            //         Icon(
+            //           Icons.filter_list,
+            //           color: Theme.of(context).hintColor,
+            //           size: 21,
+            //         ),
+            //       ],
+            //     ),
+            //   ),
+            // ),
           ],
         ),
       ),

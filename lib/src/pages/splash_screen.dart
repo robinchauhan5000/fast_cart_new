@@ -30,9 +30,10 @@ class SplashScreenState extends StateMVC<SplashScreen> {
       _con.progress.value.values.forEach((_progress) {
         progress += _progress;
       });
+      print('progress $progress');
       if (progress == 100) {
         try {
-          Navigator.of(context).pushReplacementNamed('/login', arguments: 2);
+          Navigator.of(context).pushReplacementNamed('/Login');
         } catch (e) {}
       }
     });

@@ -4,26 +4,22 @@ import 'package:after_layout/after_layout.dart';
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
-import 'intro_screen.dart';
-
-class Splash extends StatefulWidget {
-  static String route = "splash_screen";
+class OnboardingCheck extends StatefulWidget {
   @override
-  SplashState createState() => new SplashState();
+  OnboardingCheckState createState() => new OnboardingCheckState();
 }
 
-class SplashState extends State<Splash> with AfterLayoutMixin<Splash> {
+class OnboardingCheckState extends State<OnboardingCheck>
+    with AfterLayoutMixin<OnboardingCheck> {
   Future checkFirstSeen() async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
     bool _seen = (prefs.getBool('seen') ?? false);
 
     if (_seen) {
-      Navigator.of(context).pushReplacement(
-          new MaterialPageRoute(builder: (context) => LoginAndSignUpScreen()));
+      Navigator.pushReplacementNamed(context, '/Splash');
     } else {
       await prefs.setBool('seen', true);
-      Navigator.of(context).pushReplacement(
-          new MaterialPageRoute(builder: (context) => OnBoardingScreen()));
+      Navigator.pushReplacementNamed(context, '/OnBoardingScreen');
     }
   }
 

@@ -7,7 +7,6 @@ import 'package:markets/utills/SizeConfig.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 
 class OnBoardingScreen extends StatefulWidget {
-  static String route = '/BottomNav';
   Color color;
 
   OnBoardingScreen({this.color});
@@ -26,9 +25,8 @@ class _OnBoardingScreenState extends State<OnBoardingScreen> {
     _myPage = PageController(initialPage: 0);
     selectedPage = 0;
     SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle(
-        statusBarColor: Colors.white, statusBarIconBrightness: Brightness.dark
-        //or set color with: Color(0xFF0000FF)
-        ));
+        statusBarColor: Colors.white,
+        statusBarIconBrightness: Brightness.dark));
   }
 
   List<String> listOfPic = [
@@ -42,6 +40,7 @@ class _OnBoardingScreenState extends State<OnBoardingScreen> {
   bool buttonPressed = false;
   @override
   Widget build(BuildContext context) {
+    SizeConfig().init(context);
     return Scaffold(
       body: Column(
         children: [
@@ -106,8 +105,8 @@ class _OnBoardingScreenState extends State<OnBoardingScreen> {
     );
   }
 
-  goToLoginAndSignUpScreen() {
-    Navigator.pushNamed(context, LoginAndSignUpScreen.route);
+  goToLoginScreen() {
+    Navigator.pushNamed(context, '/Login');
   }
 }
 
@@ -131,7 +130,7 @@ class PageViewSceens extends StatelessWidget {
         actions: [
           GestureDetector(
             onTap: () {
-              Navigator.pushNamed(context, LoginAndSignUpScreen.route);
+              Navigator.pushNamed(context, '/Login');
             },
             child: Padding(
               padding: const EdgeInsets.all(8.0),
